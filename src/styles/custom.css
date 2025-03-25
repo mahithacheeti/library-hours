@@ -4,10 +4,95 @@
   font-style: italic;
 }
 
-.custom-primary-border-bottom {
-  border-bottom: 4px solid #ff8200;
+.library-header {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
-.custom-primary-border-top {
-  border-top: 4px solid #ff8200;
+.card-title {
+  font-weight: 600;
+  word-break: break-word;
+  white-space: normal;
+  font-size: 1.15rem;
+  margin-bottom: 0;
 }
+
+.card-body {
+  border-bottom: 5px solid #ff8200;
+}
+
+.icon-link {
+  font-size: 0.85rem;
+  margin-left: 6px;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  opacity: 0.85;
+  text-decoration: none;
+}
+
+.icon-link:hover {
+  text-decoration: underline;
+}
+
+.open-hours-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid #f1f1f1;
+  font-size: 0.97rem;
+}
+
+.highlight-today {
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #f8f9fa;
+}
+
+.open-hours-time {
+  color: #555;
+  white-space: nowrap;
+  margin-left: 8px;
+  text-align: right;
+}
+
+.day-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.day-date {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.highlight-selected {
+  background-color: #f1f3f5;
+  border-radius: 6px;
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-open {
+  background-color: #28a745;
+  color: white;
+}
+
+.status-closed {
+  background-color: #dc3545;
+  color: white;
+}
+
+.status-24hr {
+  font-weight: 600;
+  color: #17a2b8; 
+}
+
