@@ -10,6 +10,7 @@ const LibraryCard = ({
   isOpen,
   weekTimes,
   showFullWeek,
+  selectedDate,
 }) => {
   return (
     <div className="col-md-4 mb-4">
@@ -17,7 +18,11 @@ const LibraryCard = ({
         <div className="card-body d-flex flex-column justify-content-between">
           <LibraryHeader name={name} url={url} contact={contact} />
           <LibraryStatus isOpen={isOpen} weekTimes={weekTimes} />
-          <LibraryHoursList weekTimes={weekTimes} showFullWeek={showFullWeek} />
+          <LibraryHoursList
+            weekTimes={weekTimes}
+            showFullWeek={showFullWeek}
+            selectedDate={selectedDate}
+          />
         </div>
       </div>
     </div>

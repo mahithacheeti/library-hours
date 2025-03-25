@@ -2,7 +2,7 @@ import React from "react";
 import LibraryHoursItem from "./LibraryHoursItem";
 import { extractAllDays, reorderFromToday } from "../../utils/dateUtils";
 
-const LibraryHoursList = ({ weekTimes, showFullWeek }) => {
+const LibraryHoursList = ({ weekTimes, showFullWeek, selectedDate }) => {
   const allDays = extractAllDays(weekTimes);
 
   const todayStr = new Date().toLocaleDateString("en-CA", {
@@ -16,19 +16,36 @@ const LibraryHoursList = ({ weekTimes, showFullWeek }) => {
 
   let visibleDays = [];
 
-  if (showFullWeek) {
-    const ordered = reorderFromToday(allDays);
-    visibleDays = ordered.slice(0, 7);
+  if (selectedDate) {
+    const selectedIndex = allDays.findIndex((d) => d.date === selectedDate);
+    if (selectedIndex !== -1) {
+      if (showFullWeek) {
+        const start = Math.max(0, selectedIndex - 3);
+        const end = selectedIndex + 4;
+        visibleDays = allDays.slice(start, end);
+      } else {
+        visibleDays = [allDays[selectedIndex]];
+      }
+    }
   } else {
-    visibleDays = allDays.filter(
-      (d) => d.date === todayStr || d.date === tomorrowStr
-    );
+    if (showFullWeek) {
+      const ordered = reorderFromToday(allDays);
+      visibleDays = ordered.slice(0, 7);
+    } else {
+      visibleDays = allDays.filter(
+        (d) => d.date === todayStr || d.date === tomorrowStr
+      );
+    }
   }
 
   return (
     <div>
       <h6 className="text-muted mb-2">
-        {showFullWeek ? "Weekly Hours:" : "Open Hours:"}
+        {selectedDate
+          ? "Hours for Selected Date:"
+          : showFullWeek
+          ? "Weekly Hours:"
+          : "Open Hours:"}
       </h6>
 
       <ul className="list-unstyled open-hours-list">
@@ -38,6 +55,7 @@ const LibraryHoursList = ({ weekTimes, showFullWeek }) => {
             entry={entry}
             todayStr={todayStr}
             tomorrowStr={tomorrowStr}
+            selectedDate={selectedDate}
           />
         ))}
       </ul>

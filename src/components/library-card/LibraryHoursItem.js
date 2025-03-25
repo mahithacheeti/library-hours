@@ -1,10 +1,15 @@
 import React from "react";
 import { formatDisplayDate } from "../../utils/dateUtils";
 
-const LibraryHoursItem = ({ entry, todayStr, tomorrowStr }) => {
+const LibraryHoursItem = ({ entry, todayStr, tomorrowStr, selectedDate }) => {
+  const isToday = entry.date === todayStr && !selectedDate;
+  const isSelected = entry.date === selectedDate;
+
   return (
     <li
-      className={`py-2 px-2 rounded d-flex justify-content-between align-items-center "highlight-today"`}
+      className={`py-2 px-2 rounded d-flex justify-content-between align-items-center ${
+        isToday ? "highlight-today" : isSelected ? "highlight-selected" : ""
+      }`}
     >
       <div className="d-flex flex-column">
         <span className="fw-semibold">
