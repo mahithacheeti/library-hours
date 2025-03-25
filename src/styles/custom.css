@@ -1,0 +1,13 @@
+.custom-header-text {
+  color: #58595b;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.custom-primary-border-bottom {
+  border-bottom: 4px solid #ff8200;
+}
+
+.custom-primary-border-top {
+  border-top: 4px solid #ff8200;
+}
